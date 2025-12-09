@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Self-Supervised Learning Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f7fb;
+      color: #111827;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    header {
+      margin-bottom: 24px;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 12px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 4px 0 0;
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+
+    h2 {
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 4px;
+    }
+
+    .paper-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .paper-card {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 16px 18px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    }
+
+    .paper-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .paper-meta {
+      font-size: 0.88rem;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .paper-meta span + span::before {
+      content: "•";
+      margin: 0 6px;
+    }
+
+    .paper-link a {
+      font-size: 0.88rem;
+      text-decoration: none;
+      color: #2563eb;
+    }
+
+    .paper-link a:hover {
+      text-decoration: underline;
+    }
+
+    .paper-summary p {
+      margin: 6px 0;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    /* Table section */
+    .table-wrapper {
+      margin-top: 16px;
+      overflow-x: auto;
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 6px 8px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+    }
+
+    td:first-child,
+    th:first-child {
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .check {
+      font-size: 1rem;
+    }
+
+    .check::before {
+      content: "✓";
+      color: #16a34a;
+      font-weight: 600;
+    }
+
+    .empty {
+      color: #d1d5db;
+    }
+
+    footer {
+      margin-top: 32px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Self-Supervised Learning Paper Notes</h1>
+      <p>Summaries and feature comparison for different types of SSL algorithms.</p>
+    </header>
+
+    <!-- PAPERS SECTION -->
+    <section>
+      <h2>Papers</h2>
+      <div class="paper-list">
+
+        <!-- Example paper card: edit / duplicate this block for more papers -->
+        <article class="paper-card">
+          <div class="paper-title">
+            [1] Masked Autoencoders Are Scalable Vision Learners
+          </div>
+          <div class="paper-meta">
+            <span>CVPR 2022</span>
+            <span>Citations: 12,652 (as on date 12/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openaccess.thecvf.com/content/CVPR2022/papers/He_Masked_Autoencoders_Are_Scalable_Vision_Learners_CVPR_2022_paper.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+             The authors of [1] propose using masked autonencoding to learn rich semantic features through self-supervision. They observed the wide usage and success of autoencoding in NLP which inspired them to explore this technique for vision tasks. However, they identified two important gaps while trying to adapt this to the area of vision. In NLP, the words in a sentence are masked and the task is to predict these missing words. The missing words contain rich semantic information, however that is not the same case with vision, because pixels carry a lower semantic level of information. Masking a few pixels can be easily recovered through the help of extrapolation from the neighboring pixels. It requires having little to no knowledge of the surrounding area or an object. Another key drawback they found was in the previous denoising autoencoding methods which process the entire image (containing both masked and non-masked pixels as the input to the encoder). With convolutional networks, it was not possible to integrate the masked tokens or positional embeddings in the latent space, but with the help of ViT, they could now easily overcome this limitation (making training 3x faster). Additionally, previous denoising autoencoders calculated loss on all pixels rather than just the masked pixels, which proved to be slightly bad (just an empirical evidence). 
+            </p>
+            <p>
+              Their method involves three steps. First, randomly masking a very high percentage of pixels within the image, because masking a high proportion of the input image yields a non-trivial and meaningful self-supervisory task. They pass only the unmasked pixels through the encoder (<25% of pixels of the image), reducing compute and memory, and enabling the designing of very large encoders. The latent representations of the unmasked pixels along with the mask tokens are then passed into the decoder. The decoder reconstructs the pixels of the image. The decoder design plays an important role in determining the semantic level of learned latent representations. A decoder with deeper depth enables the encoder to learn useful representations because the last several layers of the decoder can account for the reconstruction specializing, leaving the latent representations at a more abstract level. Whereas, if the decoder is shallower, the encoder is now forced to aid the decoder with reconstructing the pixels, rather than learning good representations. 
+            </p>
+          </div>
+        </article>
+
+        <!-- Copy-paste this whole <article> block and change details for each new paper -->
+        <!--
+        <article class="paper-card">
+          <div class="paper-title">[5] Your Next Paper Title</div>
+          <div class="paper-meta">
+            <span>Conference, Year</span>
+            <span>Citations: N</span>
+          </div>
+          <div class="paper-link">
+            <a href="PDF_LINK_HERE" target="_blank" rel="noopener noreferrer">PDF link</a>
+          </div>
+          <div class="paper-summary">
+            <p>First paragraph of your summary.</p>
+            <p>Second paragraph of your summary.</p>
+          </div>
+        </article>
+        -->
+
+      </div>
+    </section>
+
+    <!-- TABLE SECTION -->
+    <section>
+      <h2>Algorithm vs Feature Comparison</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Algorithm</th>
+              <th>MAE [1]</th>
+              <th>SimCLR [2]</th>
+              <th>BYOL [3]</th>
+              <th>I-JEPA [4]</th>
+              <th>Data2vec [5]</th>
+              <th>iBot [6]</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example rows, change ✓/blank as needed -->
+            <tr>
+              <td>I-JEPA</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>BYOL</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimCLR</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <!-- Add more algorithms as new rows -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      Built with ❤️ and GitHub Pages.
+    </footer>
+  </div>
+</body>
+</html>
