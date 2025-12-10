@@ -268,6 +268,46 @@
           </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [3] Bootstrap Your Own Latent A New Approach to Self-Supervised Learning
+          </div>
+          <div class="paper-meta">
+            <span>NeurIPS 2020</span>
+            <span>Citations: 9,592 (as on date 12/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://proceedings.neurips.cc/paper_files/paper/2020/file/f3ada80d5c4ee70142b17b8192b2958e-Paper.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              For self-supervised learning using a cross-view regression framework, the representation of the two correlated views are aligned, but leads to 
+              representation collapse, i.e. the network maps all inputs to the same constant representation. To overcome this, contrastive learning (CL) methods 
+              [2] rely on discriminating positive pairs from many negative-pair examples, which makes them highly dependent on large batch sizes. Also, they 
+              require multiple stochastic data augmentations for learning good representations. 
+            </p>
+            <p>
+              The BYOL [3] algorithm addresses the above challenges posed by CL. It begins by providing two augmented views of the same image as input to a 
+              student and a teacher network. The teacher consists of an encoder and a projection head, while the student consists of the same but also includes 
+              a predictor function, which predicts the representations of the teacher. The loss between the representations of teacher and student predictions are 
+              minimized. When we use a randomly initialized, fixed network to produce teacher representations and train the student to predict those 
+              representations, it avoids collapse, though the resulting representations are weak. Subsequently, if a student can improve upon a random fixed 
+              teacher, then iteratively predicting better teacher representations yields increasingly stronger representations. As a result, from the teacher 
+              representation, a potentially improved representation using the student network can be trained by predicting that teacher representation. Repeating 
+              this process creates a sequence of progressively refined representations, using each student network as the next teacher. BYOL generalizes this 
+              bootstrapping idea by updating the weights of only the student network and using a slow exponential moving average of the student network as the 
+              teacher network.
+            </p>
+            <div class="paper-figure">
+              <img src="images/byol.png" alt="BYOL architecture">
+              <p class="caption">Figure: BYOL Architecture [3].</p>
+            </div>
+          </div>
+          </div>
+        </article>
         <!-- Copy-paste this whole <article> block and change details for each new paper -->
         <!--
         <article class="paper-card">
