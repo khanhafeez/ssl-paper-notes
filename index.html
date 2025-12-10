@@ -83,7 +83,22 @@
     .paper-link a:hover {
       text-decoration: underline;
     }
-
+    .paper-figure {
+      margin-top: 12px;
+      text-align: center;
+    }
+    
+    .paper-figure img {
+      max-width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    
+    .paper-figure .caption {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 6px;
+    }
     .paper-summary p {
       margin: 6px 0;
       font-size: 0.92rem;
@@ -185,6 +200,11 @@
             <p>
               Their method involves three steps. First, randomly masking a very high percentage of pixels within the image, because masking a high proportion of the input image yields a non-trivial and meaningful self-supervisory task. They pass only the unmasked pixels through the encoder (<25% of pixels of the image), reducing compute and memory, and enabling the designing of very large encoders. The latent representations of the unmasked pixels along with the mask tokens are then passed into the decoder. The decoder reconstructs the pixels of the image. The decoder design plays an important role in determining the semantic level of learned latent representations. A decoder with deeper depth enables the encoder to learn useful representations because the last several layers of the decoder can account for the reconstruction specializing, leaving the latent representations at a more abstract level. Whereas, if the decoder is shallower, the encoder is now forced to aid the decoder with reconstructing the pixels, rather than learning good representations. 
             </p>
+            <div class="paper-figure">
+              <img src="images/mae.png" alt="MAE architecture">
+              <p class="caption">Figure: MAE Architecture [1].</p>
+            </div>
+          </div>
           </div>
         </article>
 
