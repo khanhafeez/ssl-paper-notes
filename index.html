@@ -430,44 +430,167 @@
           <thead>
             <tr>
               <th>Algorithm</th>
-              <th>MAE [1]</th>
-              <th>SimCLR [2]</th>
-              <th>BYOL [3]</th>
-              <th>I-JEPA [4]</th>
-              <th>Data2vec [5]</th>
-              <th>iBot [6]</th>
+              <th>Predictive Method</th>
+              <th>Masking Strategy</th>
+              <th>Asymmetric Architecture</th>
+              <th>Contrastive Learning</th>
+              <th>Data Augmentation</th>
+              <th>Normalization</th>
+              <th>Negative Pairs</th>
+              <th>Deals with Global Views</th>
+              <th>Deals with Local Views</th>
+              <th>Bootstrapping</th>
+              <th>Patch-level Recon Loss</th>
+              <th>Representation-level Recon Loss</th>
+              <th>Learns View-invariance features</th>
+              <th>Learns Structural Features</th>
+              <th>Full Image Contextualization</th>
+              <th>Last-k Layer Averaged Teacher Representations</th>
+              <th>Large Batch size Req.</th>
+              <th>Large Training Epochs</th>
+              <th>Loss</th>
             </tr>
           </thead>
           <tbody>
             <!-- Example rows, change ✓/blank as needed -->
             <tr>
-              <td>I-JEPA</td>
-              <td class="check"></td>
+              <td>MAE [1]</td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <th>MSE</th>
             </tr>
             <tr>
-              <td>BYOL</td>
+              <td>SimCLR [2]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <th>MSE</th>
             </tr>
             <tr>
-              <td>SimCLR</td>
+              <td>BYOL [3]</td>
+              <td class="check"></td>
+              <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <th>MSE</th>
             </tr>
-            <!-- Add more algorithms as new rows -->
+            <tr>
+              <td>I-JEPA [4]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <th>MSE</th>
+            </tr>
+            <tr>
+              <td>Data2vec [5]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <th>MSE</th>
+            </tr>
+            <tr>
+              <td>iBOT [6]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <th>MSE</th>
+            </tr>
           </tbody>
         </table>
       </div>
