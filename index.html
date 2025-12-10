@@ -344,6 +344,45 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [5] data2vec: A General Framework for Self-supervised Learning in Speech, Vision and Language
+          </div>
+          <div class="paper-meta">
+            <span>ICML 2022</span>
+            <span>Citations: 1,205 (as on date 12/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://proceedings.mlr.press/v162/baevski22a/baevski22a.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Most prior research in self-supervised learning has focused on a specific modality (e.g. image, words, or speech), which leads to designing specific 
+              architectures and learning biases that may not generalize to other modalities. Moreover, in computer vision, prior works consist of regressing/predicting 
+              targets that contain information isolated to the current patch, such as visual tokens or pixels, which lack contextualized information (relevant features 
+              from the entire image).  While some discriminative methods [3] use the latent target representation of the entire input, their aim is to learn 
+              transformation-invariant features instead of structural information within a sample.
+            </p>
+            <p>
+              Data2vec proposes regressing over the latent representations of the full input data using a masked view of the same input. It primarily consists of 
+              a student and a teacher mode which share the same architecture. The teacher consists of taking as input a sequence of encoded tokens of the full 
+              input and providing it to the ViT to get the latent representations. The student consists of transforming the same input into encoded tokens and 
+              then randomly replacing tokens with a learnable mask embedding token, and feeding it to the ViT. The L2 loss between only the masked tokens of the 
+              student and the corresponding positional tokens in the teacher representations are regressed. The weights of the student are updated using gradient 
+              descent while the weights of the teacher are updated using the EMA of the student network. The teacher provides contextualized representations, 
+              which contain richer information of the input data due to the self-attention mechanism of the transformer network. Moreover, they are normalized 
+              and averaged outputs of last k-layers of the teacher network, since neural networks build features over multiple layers and providing different 
+              types of features from multiple layers enriches the self-supervisory task.   
+            </p>
+            <div class="paper-figure">
+              <img src="images/data2vec.png" alt="data2vec architecture">
+              <p class="caption">Figure: Data2vec Architecture [3].</p>
+            </div>
+          </div>
+        </article>
         <!-- Copy-paste this whole <article> block and change details for each new paper -->
         <!--
         <article class="paper-card">
