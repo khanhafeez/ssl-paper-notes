@@ -225,6 +225,49 @@
           </div>
         </article>
 
+        <article class="paper-card">
+          <div class="paper-title">
+            [2] A Simple Framework for Contrastive Learning of Visual Representations
+          </div>
+          <div class="paper-meta">
+            <span>ICML 2020</span>
+            <span>Citations: 28,187 (as on date 12/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://proceedings.mlr.press/v119/chen20j/chen20j.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Contrastive learning of visual representations overcomes the limitation of representation collapse, however, the prior works have three key 
+              limitations. (1) Designing specialized architectures for creating effective predictive tasks, which increases algorithm complexity. (2) Using 
+              memory banks to store embeddings for negative sampling, where many stored embeddings were computed by older versions of the encoder and no longer 
+              match the current model’s representations, leading to inconsistent negatives and added training overhead.  (3) Leveraging handcrafted pretext tasks 
+              (e.g. rotation prediction, jigsaw, etc.), which risked the network exploiting heuristics to minimize loss rather than learning generalizable 
+              semantic representations.
+            </p>
+            <p>
+              The framework termed SimCLR [2] involves an integration of three components. Initially, two transformations of the same image are produced using 
+              (1) a series of stochastic data augmentations, achieving two correlated views. These two views are then passed through a base encoder network and 
+              (2) a projection head and trained to maximize agreement using the (3) contrastive loss, which pulls the representations of these two views closer, 
+              while pushing the dissimilar representations of the views of two different image-pairs (negative samples) away. After training is complete, the 
+              projection head is thrown away and the encoder is used as a learned representation for downstream tasks. (1) Data augmentation (e.g. cropping+color 
+              jitter) defines an effective discriminative task, instead of relying on specialized architectures. The composition of using multiple augmentations 
+              is necessary because cropped patches of the same image still share similar color histograms, and the neural network may be using this shortcut to 
+              minimize loss rather than learning meaningful representations. (2) Adding a learnable nonlinear transformation between the encoder representations 
+              and contrastive loss allows the encoder to learn better representations. (3) The Normalized Temperature-scaled Cross-Entropy (NT-Xent) contrastive 
+              loss uses cosine similarity, which normalizes feature magnitudes and focuses learning on the angular relationship between representations, leading 
+              to more stable and effective contrastive updates. Contrastive learning benefits from larger batch sizes and longer training because more in-batch 
+              negatives provide a stronger contrastive signal.
+            </p>
+            <div class="paper-figure">
+              <img src="images/simclr.png" alt="SimCLR architecture">
+              <p class="caption">Figure: SimCLR Architecture [2].</p>
+            </div>
+          </div>
+          </div>
+        </article>
         <!-- Copy-paste this whole <article> block and change details for each new paper -->
         <!--
         <article class="paper-card">
