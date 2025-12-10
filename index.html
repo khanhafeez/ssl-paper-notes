@@ -305,6 +305,45 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [4] Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture
+          </div>
+          <div class="paper-meta">
+            <span>CVPR 2023</span>
+            <span>Citations: 748 (as on date 12/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Assran_Self-Supervised_Learning_From_Images_With_a_Joint-Embedding_Predictive_Architecture_CVPR_2023_paper.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Discriminative methods [2,3] may introduce strong biases that affect certain downstream tasks or pretraining tasks with different data distributions. 
+              On the other hand, predictive methods like MAE [1] provide representations of lower semantic value relative to the discriminative methods and thus 
+              require end-to-end fine-tuning to perform well on the downstream tasks. To address these limitations, I-JEPA aims to learn semantic representations 
+              that do not require extensive finetuning on downstream tasks, and unlike the discriminative methods, do not incorporate extra prior knowledge 
+              encoded through image transformations.
+            </p>
+            <p>
+              I-JEPA learns abstract representations through the prediction of other regions of a masked image in the latent space. It consists of three main 
+              components; context, target encoders and a predictor. The context encoder processes the visible context patches, while the predictor takes the 
+              context encoder output and, conditioned on learnable mask tokens with added positional embeddings of the target block, predicts the target 
+              representations at a specific location. It does this for various target blocks. The target representations are the outputs of the target-encoder. 
+              The L2 loss is minimized between each block representation of the target encoder and the block predictions made by the predictor. The weights of 
+              context encoder and predictor are updated using gradient descent while the weights of the target encoder are updated through the exponential moving 
+              average (EMA) of the context encoder weights to avoid representation collapse. Similar to MAE [1], the masking strategy plays an important role to 
+              learn meaningful representations. As a result, the target blocks need to be large enough to contain semantic information while the context block 
+              should be spatially informative.  
+            </p>
+            <div class="paper-figure">
+              <img src="images/i-jepa.png" alt="I-JEPA architecture">
+              <p class="caption">Figure: I-JEPA Architecture [3].</p>
+            </div>
+          </div>
+        </article>
         <!-- Copy-paste this whole <article> block and change details for each new paper -->
         <!--
         <article class="paper-card">
