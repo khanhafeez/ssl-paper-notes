@@ -340,7 +340,7 @@
             </p>
             <div class="paper-figure">
               <img src="images/i-jepa.png" alt="I-JEPA architecture">
-              <p class="caption">Figure: I-JEPA Architecture [3].</p>
+              <p class="caption">Figure: I-JEPA Architecture [4].</p>
             </div>
           </div>
         </article>
@@ -379,28 +379,46 @@
             </p>
             <div class="paper-figure">
               <img src="images/data2vec.png" alt="data2vec architecture">
-              <p class="caption">Figure: Data2vec Architecture [3].</p>
+              <p class="caption">Figure: Data2vec Architecture [5].</p>
             </div>
           </div>
         </article>
-        <!-- Copy-paste this whole <article> block and change details for each new paper -->
-        <!--
+        
         <article class="paper-card">
-          <div class="paper-title">[5] Your Next Paper Title</div>
+          <div class="paper-title">
+            [6] iBOT: Image Bert pre-training with Online Tokenizer
+          </div>
           <div class="paper-meta">
-            <span>Conference, Year</span>
-            <span>Citations: N</span>
+            <span>ICLR 2022</span>
+            <span>Citations: 1,310 (as on date 12/09/2025)</span>
           </div>
           <div class="paper-link">
-            <a href="PDF_LINK_HERE" target="_blank" rel="noopener noreferrer">PDF link</a>
+            <a href="https://proceedings.mlr.press/v162/baevski22a/baevski22a.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
           </div>
           <div class="paper-summary">
-            <p>First paragraph of your summary.</p>
-            <p>Second paragraph of your summary.</p>
+            <p>
+              Prior works have focused primarily on the global views [2,3] for self-supervised learning, neglecting the internal structures of an image. 
+              Empirically, the visual semantics tend to emerge progressively by bootstrapping the teacher representation that enforces similarity across 
+              augmented views, but this process alone only captures global information and ignores the meaningful local patterns inside an image. As a result, 
+              existing methods struggle to learn meaningful visual/patch-level semantics.
+            </p>
+            <p>
+              iBOT combines learning local structural information using masked image modeling and global visual semantics using the cross-view alignment. In iBOT, 
+              an image is sampled and two augmented views are created. Both views are passed through a student and a teacher network, but the view that's input to 
+              the student undergoes random masking. The student encodes these masked patches using a ViT, while the teacher encodes the unmasked view. The 
+              student’s masked patch tokens are aligned to the corresponding teacher tokens using a cross-entropy (CE) loss. At the same time, iBOT also aligns 
+              the [CLS] tokens across the two views, using CE loss, so that the model learns global visual semantics and transformation-invariant features between 
+              the two correlated (augmented) views. The student is updated by gradient descent, and the teacher is updated as an EMA of the student. Moreover, the 
+              same projection head is shared by the [CLS] token and each patch token to borrow the capability of semantic abstraction acquired from the [CLS] token. 
+            </p>
+            <div class="paper-figure">
+              <img src="images/ibot.png" alt="ibot architecture">
+              <p class="caption">Figure: iBOT Architecture [6].</p>
+            </div>
           </div>
         </article>
-        -->
-
       </div>
     </section>
 
