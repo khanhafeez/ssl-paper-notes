@@ -88,12 +88,15 @@
       text-align: center;
     }
     
-    .paper-figure img {
+    /* .paper-figure img {
       max-width: 100%;
       border-radius: 6px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    } */
+    .paper-figure img {
+      width: 60%;       /* 40–70% usually looks nice */
+      height: auto;
     }
-    
     .paper-figure .caption {
       font-size: 0.8rem;
       color: #6b7280;
@@ -195,10 +198,24 @@
           </div>
           <div class="paper-summary">
             <p>
-             The authors of [1] propose using masked autonencoding to learn rich semantic features through self-supervision. They observed the wide usage and success of autoencoding in NLP which inspired them to explore this technique for vision tasks. However, they identified two important gaps while trying to adapt this to the area of vision. In NLP, the words in a sentence are masked and the task is to predict these missing words. The missing words contain rich semantic information, however that is not the same case with vision, because pixels carry a lower semantic level of information. Masking a few pixels can be easily recovered through the help of extrapolation from the neighboring pixels. It requires having little to no knowledge of the surrounding area or an object. Another key drawback they found was in the previous denoising autoencoding methods which process the entire image (containing both masked and non-masked pixels as the input to the encoder). With convolutional networks, it was not possible to integrate the masked tokens or positional embeddings in the latent space, but with the help of ViT, they could now easily overcome this limitation (making training 3x faster). Additionally, previous denoising autoencoders calculated loss on all pixels rather than just the masked pixels, which proved to be slightly bad (just an empirical evidence). 
+              Autoencoding has been widely used in NLP for self-supervision. However, when applying this technique to computer vision, 
+              there are two key challenges. (1) In NLP, the words in a sentence are masked and the task is to predict them. The missing words 
+              contain rich semantic information, however that is not the same case with vision, because pixels carry a lower semantic level of information. 
+              Masking a few pixels can be easily recovered through the help of extrapolation from the neighboring pixels. (2) Previous denoising autoencoding (DAE) 
+              methods in vision process the entire image (containing both masked and non-masked pixels as the input to the encoder). With convolutional networks, 
+              it was not possible to integrate the masked tokens or positional embeddings in the latent space. However, with the help of ViT, it can be easily 
+              overcome (making training 3x faster). Additionally, previous DAE calculated loss on all pixels rather than just the masked pixels, which proved to 
+              be slightly bad (just an empirical evidence). 
             </p>
             <p>
-              Their method involves three steps. First, randomly masking a very high percentage of pixels within the image, because masking a high proportion of the input image yields a non-trivial and meaningful self-supervisory task. They pass only the unmasked pixels through the encoder (<25% of pixels of the image), reducing compute and memory, and enabling the designing of very large encoders. The latent representations of the unmasked pixels along with the mask tokens are then passed into the decoder. The decoder reconstructs the pixels of the image. The decoder design plays an important role in determining the semantic level of learned latent representations. A decoder with deeper depth enables the encoder to learn useful representations because the last several layers of the decoder can account for the reconstruction specializing, leaving the latent representations at a more abstract level. Whereas, if the decoder is shallower, the encoder is now forced to aid the decoder with reconstructing the pixels, rather than learning good representations. 
+              The masked autoencoder (MAE) [1] consists of three steps. First, randomly masking a very high percentage of patches of the image, because masking 
+              a high proportion of the input image yields a non-trivial and meaningful self-supervisory task. Only the unmasked patches are passed through the 
+              encoder (<25%), reducing compute and memory, and enabling the designing of very large encoders. The latent representations of the unmasked patches 
+                are concatenated with the learnable mask tokens and are then passed into the decoder. The decoder reconstructs the pixels of the image. The design 
+                of decoder plays an important role in determining the semantic level of learned latent representations. A decoder with deeper depth enables the 
+                encoder to learn useful representations because the last several layers of the decoder can account for the reconstruction specializing, leaving 
+                the latent representations at a more abstract level. Conversely, if the decoder is shallower, the encoder is now forced to aid the decoder with 
+                reconstructing the pixels, rather than learning good representations. 
             </p>
             <div class="paper-figure">
               <img src="images/mae.png" alt="MAE architecture">
@@ -280,9 +297,9 @@
       </div>
     </section>
 
-    <footer>
-      Built with ❤️ and GitHub Pages.
-    </footer>
+    <!-- <footer>
+      
+    </footer> -->
   </div>
 </body>
 </html>
