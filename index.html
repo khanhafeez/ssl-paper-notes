@@ -419,6 +419,49 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [7] Emerging properties in self-supervised vision transformers 
+          </div>
+          <div class="paper-meta">
+            <span>ICCV 2021</span>
+            <span>Citations: 9,350 (as on date 12/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Caron_Emerging_Properties_in_Self-Supervised_Vision_Transformers_ICCV_2021_paper.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              ViTs have shown competitive performance against convolutional networks, however, they haven’t shown clear benefits over them in a supervised 
+              learning setup. They require more computation, large amounts of training data to generalize and their features do not exhibit any unique properties. 
+              Moreover, supervised learning does not leverage the context rich features present in an image and may use only a single concept from a predefined set 
+              of a few thousand categories of objects.  Prior methods have proposed contrastive loss, adding predictor, or advanced normalization to avoid 
+              representation collapse, however they add little benefit to stability of training and performance. Perhaps a simpler approach could be leveraged 
+              while enjoying high performance. 
+            </p>
+            <p>
+              DINO demonstrates that self-supervised ViT features contain rich semantics and perform very well with a k-nearest neighbor classifier on top, without 
+              requiring finetuning. DINO begins by sampling an image and creating a set of augmented views that include two global views (>50% of the image) and 
+              several local views (<50%). The global views are input to a teacher network, and the local views to a student network. Each network outputs a 
+              K-dimensional feature that is normalized using a temperature-scaled softmax over the feature dimension. The latent representations of both networks 
+              are aligned using a cross-entropy loss, encouraging “local-to-global’’ correspondences. The student is updated using SGD, while the teacher is 
+              updated as an EMA of the student. DINO does not use batch-normalization and demonstrates that using smaller ViT patch sizes improves feature quality. 
+              Representation collapse in this setting is not only about predicting constant vectors, but also includes uniform distributions (each feature ≈ 1/K) or 
+              overly peaked distributions dominated by one dimension. Instead of using a predictor as in [3], DINO avoids collapse through centering and sharpening of 
+              teacher representations. They are first centered by subtracting their running average (updated via EMA), which stabilizes training and enables 
+              robustness across batch sizes. The centered outputs are then sharpened by dividing by a very small temperature and applying softmax. Centering alone 
+              risks drifting toward uniform outputs, while sharpening alone risks producing peaked distributions, so applying both together achieves the best of both 
+              worlds, avoiding collapse.
+            </p>
+            <div class="paper-figure">
+              <img src="images/dino.png" alt="dino architecture">
+              <p class="caption">Figure: DINO Architecture [7].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
