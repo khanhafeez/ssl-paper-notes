@@ -462,6 +462,47 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [8] Unsupervised Learning of Visual Features by Contrasting Cluster Assignments 
+          </div>
+          <div class="paper-meta">
+            <span>NeurIPS 2020</span>
+            <span>Citations: 5,478 (as on date 12/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://proceedings.neurips.cc/paper_files/paper/2020/file/70feb62b69f16e0238f741fab228fec2-Paper.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Contrastive learning (CL) shows that aligning features from two augmented views while pushing apart negatives helps avoid collapse and yields good 
+              representations. However, CL relies on random subsets of images to approximate-the-loss since it cannot use each and every pair to train, and also 
+              needs very large batch sizes to generalize. Prior clustering-based approaches try to overcome this by assigning each image to a prototype and 
+              training the model to predict these assignments for augmented views. Yet these methods follow a two-step offline approach where cluster assignments 
+              must be recomputed over the entire dataset, which becomes impractical as dataset size grows. Another limitation is that, despite evidence that 
+              multiple augmentations improve invariance, most methods still operate with only two augmented views.
+            </p>
+            <p>
+              SwAV proposes to approximate-the-task by incorporating online clustering. For every image, several augmented views are created and passed through 
+              an encoder to get feature vectors. Instead of directly comparing these features like in [2], each feature is assigned to one of several learnable 
+              prototype vectors, which act like cluster centers. These assignments are called “codes.” Inspired by CL, SwAV then uses swapped alignment: the 
+              feature from one view must align with the code produced by another view of the same image, and vice-versa. If the two views contain the same 
+              underlying content, their codes should match, so this cross-view alignment encourages the encoder to learn consistent and meaningful representations. 
+              To compute codes without storing the whole dataset, SwAV uses only the features within the current batch and applies a Sinkhorn normalization step 
+              to ensure that prototypes are used evenly across the batch. This avoids trivial collapse where all features map to the same prototype. The method 
+              also proposes using multi-crop augmentation, where one encoder receives two global views and the other encoder receives several local, low-resolution 
+              crops of different sizes, to provide more diverse views and avoid biases in the features. Altogether, SwAV combines online clustering, balanced 
+              assignments, and swapped alignment to learn representations without explicit negative samples or large memory banks.
+            </p>
+            <div class="paper-figure">
+              <img src="images/swav.png" alt="swav architecture">
+              <p class="caption">Figure: SwAV Architecture [8].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -492,6 +533,8 @@
               <th>Last-k Layer Averaged Teacher Representations</th>
               <th>Large Batch size Req.</th>
               <th>Large Training Epochs</th>
+              <th>Multiple Augmentations</th>
+              <th>Clustering</th>
             </tr>
           </thead>
           <tbody>
@@ -517,6 +560,8 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimCLR [2]</td>
@@ -539,6 +584,8 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>BYOL [3]</td>
@@ -561,6 +608,8 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>I-JEPA [4]</td>
@@ -579,6 +628,8 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -605,6 +656,8 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>iBOT [6]</td>
@@ -624,6 +677,8 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -649,6 +704,32 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SwAV [8]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
             </tr>
           </tbody>
         </table>
