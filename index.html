@@ -503,6 +503,51 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [9] Context Autoencoder for Self-supervised Representation Learning
+          </div>
+          <div class="paper-meta">
+            <span>IJCV 2024</span>
+            <span>Citations: 524 (as on date 12/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://link.springer.com/content/pdf/10.1007/s11263-023-01852-4.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              The encoder of an SSL algorithm must learn highly informative and context-rich representations during pretraining to perform well on downstream 
+              tasks. However, several prior works operating in the latent space do not explicitly separate representation learning from task completion, and ViTs 
+              effectively mix encoder and decoder roles, which can limit representation capacity. For instance, in the masked image modeling component of the iBOT 
+              algorithm [6], it does not separate the representation role and task completion role and uses both visible and masked patches as input, 
+              simultaneously for the two roles. Similarly, in MAE [1], the decoder partially participates in representation learning because representations of 
+              visible patches are also updated within the decoder, dispersing semantic learning across encoder-decoder. In view-invariance based methods [2,3], 
+              cropping is critical for representation learning, yet most cropping strategies consistently include the image center. Since ImageNet-1K images 
+              predominantly contain centered objects, this biases the model toward learning representations mainly from central regions, limiting coverage of the 
+              full image. Consequently, objects away from the center may be treated as noise during contrastive learning, reducing the diversity of learned 
+              representations.
+            </p>
+            <p>
+              CAE proposes an encoder-regressor-decoder algorithm for representation learning. It decouples representation learning from solving the pretext task, 
+              i.e., masked representation prediction and masked patch reconstruction. In the first step, an image is split into a sequence of patches, and only the 
+              visible patches are passed through the encoder. In the second step, the latent representations of the visible patches, along with learnable masked 
+              patch tokens, and their positional embeddings are passed into a regressor consisting of transformer blocks with cross-attention, where masked patch 
+              tokens serve as queries and visible patch representations serve as keys and values, to predict the latent representations of the masked patches. In 
+              the third step, the predicted masked latent representations are input to the decoder to reconstruct the discrete visual tokens of the masked patches, 
+              i.e., tokens produced by a d-VAE trained on ImageNet-1K or the DALL-E tokenizer. The predicted masked latent representations are aligned with the masked 
+              representations obtained from a target encoder using an MSE loss. The gradients are stopped on the target encoder branch. Simultaneously, the patch-level 
+              reconstruction is optimized using a cross-entropy loss over the discrete visual tokens. Through this algorithm, the encoder takes the full responsibility 
+              of learning representations, operating only on the visible patches and focusing on learning the semantic representations.
+            </p>
+            <div class="paper-figure">
+              <img src="images/cae.png" alt="cae architecture">
+              <p class="caption">Figure: CAE Architecture [9].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -730,6 +775,30 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+            </tr>
+            <tr>
+              <td>CAE [9]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
           </tbody>
         </table>
