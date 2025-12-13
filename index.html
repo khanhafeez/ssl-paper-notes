@@ -534,13 +534,13 @@
               CAE proposes an encoder-regressor-decoder algorithm for representation learning. It decouples representation learning from solving the pretext task, 
               i.e., masked representation prediction and masked patch reconstruction. In the first step, an image is split into a sequence of patches, and only the 
               visible patches are passed through the encoder. In the second step, the latent representations of the visible patches, along with learnable masked 
-              patch tokens, and their positional embeddings are passed into a regressor consisting of transformer blocks with cross-attention, where masked patch 
+              patch tokens, and their positional embeddings are passed into a regressor. The regressor consists of transformer blocks with cross-attention, where masked patch 
               tokens serve as queries and visible patch representations serve as keys and values, to predict the latent representations of the masked patches. In 
               the third step, the predicted masked latent representations are input to the decoder to reconstruct the discrete visual tokens of the masked patches, 
               i.e., tokens produced by a d-VAE trained on ImageNet-1K or the DALL-E tokenizer. The predicted masked latent representations are aligned with the masked 
-              representations obtained from a target encoder using an MSE loss. The gradients are stopped on the target encoder branch. Simultaneously, the patch-level 
-              reconstruction is optimized using a cross-entropy loss over the discrete visual tokens. Through this algorithm, the encoder takes the full responsibility 
-              of learning representations, operating only on the visible patches and focusing on learning the semantic representations.
+              representations obtained from a target encoder using MSE loss. The gradients are stopped on the target encoder branch to prevent collapse. Simultaneously, the patch-level 
+              reconstruction is optimized using cross-entropy loss over the discrete visual tokens. The encoder operates only on the visible patches, and CAE enables it to learn 
+              context-rich representations of all the features present in an image.
             </p>
             <div class="paper-figure">
               <img src="images/cae.png" alt="cae architecture">
