@@ -548,6 +548,43 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [10] SimMIM: a Simple Framework for Masked Image Modeling
+          </div>
+          <div class="paper-meta">
+            <span>CVPR 2022</span>
+            <span>Citations: 1,981 (as on date 12/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openaccess.thecvf.com/content/CVPR2022/papers/Xie_SimMIM_A_Simple_Framework_for_Masked_Image_Modeling_CVPR_2022_paper.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Masked signal modeling has shown great success with NLP in the past, and it has also widely been adapted in the computer vision area. When predicting 
+              masked words, a self-supervised model learns features of high semantic value, however in vision, pixels carry low-level semantics, and the 
+              reconstruction task becomes trivial if only a low percentage of pixels are masked in an image [1]. Recent methods have addressed this, but they use 
+              specialized designs such as converting continuous signals into clusters, patch tokenization using an additional network, or block-wise masking 
+              strategy to break short-range connections.
+            </p>
+            <p>
+              SimMIM proposes a very simple framework that can be used for downstream tasks by finetuning the model once it has been pretrained. It consists of 
+              three steps. (1) Randomly masking the patches within an image either using large patch sizes (e.g. 32) or high masking ratios (>80%), which 
+              significantly reduces the chance of extrapolating neighboring pixels to recover the pixels. (2) The masked patches are replaced with learnable mask 
+              token vectors, and then along with the visible patches, they are input to a ViT for obtaining the latent representations. (3) The latent 
+              representations are decoded using only a single linear layer and the L1 loss is applied between only the original and predicted masked pixels. 
+              SimMIMs main goal is to learn representations which can complement the following down-stream tasks by finetuning, rather than focussing on performing 
+              well through linear probing.  
+            </p>
+            <div class="paper-figure">
+              <img src="images/simmim" alt="simmim architecture">
+              <p class="caption">Figure: SimMIM Architecture [10].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -797,6 +834,30 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimMIM [10]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
