@@ -589,34 +589,20 @@
     </section>
 
     <!-- TABLE SECTION -->
+    <h2>Algorithm vs Feature Comparison</h2>
     <section>
-      <h2>Algorithm vs Feature Comparison</h2>
+      <h3>Input</h3>
       <div class="table-wrapper">
         <table>
           <thead>
             <tr>
               <th>Algorithm</th>
-              <th>Predictive Method</th>
-              <th>Masking Strategy</th>
-              <th>Asymmetric Architecture</th>
-              <th>Contrastive Learning</th>
+              <th>Random Masking</th>
               <th>Data Augmentation</th>
-              <th>Prior Knowledge</th>
-              <th>Normalization</th>
-              <th>Negative Pairs</th>
-              <th>Deals with Global Views</th>
-              <th>Deals with Local Views</th>
-              <th>Bootstrapping</th>
-              <th>Patch-level Recon Loss</th>
-              <th>Representation-level Recon Loss</th>
-              <th>Learns View-invariance features</th>
-              <th>Learns Structural Features</th>
-              <th>Full Image Contextualization</th>
-              <th>Last-k Layer Averaged Teacher Representations</th>
-              <th>Large Batch size Req.</th>
-              <th>Large Training Epochs</th>
               <th>Multiple Augmentations</th>
-              <th>Clustering</th>
+              <th>Negative-pair samples</th>
+              <th>Local views</th>
+              <th>Global views</th>
             </tr>
           </thead>
           <tbody>
@@ -624,22 +610,121 @@
             <tr>
               <td>MAE [1]</td>
               <td class="check"></td>
-              <td class="check"></td>
-              <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimCLR [2]</td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>BYOL [3]</td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>I-JEPA [4]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>Data2vec [5]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>iBOT [6]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>DINO [7]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>SwAV [8]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>CAE [9]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimMIM [10]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h3>Architecture</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Algorithm</th>
+              <th>Predictive method</th>
+              <th>View-invariance method</th>
+              <th>Asymmetric Architecture</th>
+              <th>Bootstrapping</th>
+              <th>Normalization</th>
+              <th>Clustering</th>
+              <th>Last-k layer averaged target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example rows, change ✓/blank as needed -->
+            <tr>
+              <td>MAE [1]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -648,23 +733,9 @@
             <tr>
               <td>SimCLR [2]</td>
               <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -672,23 +743,9 @@
             <tr>
               <td>BYOL [3]</td>
               <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -696,166 +753,68 @@
             <tr>
               <td>I-JEPA [4]</td>
               <td class="check"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>Data2vec [5]</td>
-              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
             </tr>
             <tr>
               <td>iBOT [6]</td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>DINO [7]</td>
               <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
+              <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>SwAV [8]</td>
               <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="check"></td>
             </tr>
             <tr>
               <td>CAE [9]</td>
               <td class="check"></td>
-              <td class="check"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>SimMIM [10]</td>
               <td class="check"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -865,6 +824,281 @@
         </table>
       </div>
     </section>
+
+    <section>
+      <h3>Loss</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Algorithm</th>
+              <th>MAE/L1</th>
+              <th>MSE/L2</th>
+              <th>CE</th>
+              <th>Contrastive Learning</th>
+              <th>Patch-level</th>
+              <th>Representation-level</th>
+              <th>Last-k layer averaged target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example rows, change ✓/blank as needed -->
+            <tr>
+              <td>MAE [1]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimCLR [2]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>BYOL [3]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>I-JEPA [4]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>Data2vec [5]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>iBOT [6]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>DINO [7]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>SwAV [8]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>CAE [9]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>SimMIM [10]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h3>Inductive biases</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Algorithm</th>
+              <th>Prior knowledge</th>
+              <th>Learns representations through view-transformations</th>
+              <th>Learns representations through structural information</th>
+              <th>Full image contextualizationng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example rows, change ✓/blank as needed -->
+            <tr>
+              <td>MAE [1]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimCLR [2]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>BYOL [3]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>I-JEPA [4]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>Data2vec [5]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>iBOT [6]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>DINO [7]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>SwAV [8]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>CAE [9]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimMIM [10]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h3>Training requirements</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Algorithm</th>
+              <th>Prior knowledge</th>
+              <th>Large batch sizes increase performance</th>
+              <th>Long training (> 1500 epochs)</th>
+              <th>Full image contextualizationng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example rows, change ✓/blank as needed -->
+            <tr>
+              <td>MAE [1]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>SimCLR [2]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>BYOL [3]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>I-JEPA [4]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>Data2vec [5]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>iBOT [6]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>DINO [7]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SwAV [8]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>CAE [9]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>SimMIM [10]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    
+    
 
     <!-- <footer>
       
