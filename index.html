@@ -585,6 +585,42 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [11] Masked Siamese Networks for Label-Efficient Learning
+          </div>
+          <div class="paper-meta">
+            <span>ECCV 2022</span>
+            <span>Citations: 468 (as on date 12/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136910442.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Prior works in masked image modeling [1] have shown great performance in self-supervised learning. However, optimizing the reconstruction loss 
+              requires modeling low-level image details that are not necessary for the downstreams tasks that involve semantic abstraction. Moreover, they 
+              require longer training hours and increased memory and computation to train and generalize.  
+            </p>
+            <p>
+              MSN is a joint-embedding architecture. It learns representations through both view-transformations and masked image modeling. In the first step, 
+              two instances of the same image are created and undergo random data augmentations. Let one be referred to as the anchor view and other as target view. 
+              The anchor view then undergoes masking (either random or focal), after which it is passed to ViT encoder to obtain the [CLS] token output as its latent representation. 
+              Similarly, the target view is also passed through a ViT to obtain its [CLS] token. A soft-distribution over a set of prototypes for both the anchor 
+              and target views are obtained, similar to the online clustering approach [8]. The cross entropy loss is minimized, where the objective is to assign 
+              the representation of the masked anchor view to the same prototypes as the representation of the unmasked target view. Additionally, a mean entropy 
+              maximization regularizer is used to encourage the model to utilize the full set of prototypes. The weights of the anchor view are updated via 
+              gradient descent while the weights of the target are updated through EMA of the anchor.
+            </p>
+            <div class="paper-figure">
+              <img src="images/simmim.png" alt="simmim architecture">
+              <p class="caption">Figure: SimMIM Architecture [10].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -697,6 +733,15 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>MSN [11]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -710,6 +755,7 @@
             <tr>
               <th>Algorithm</th>
               <th>Predictive method</th>
+              <th>Alignment method</th>
               <th>View-invariance method</th>
               <th>Asymmetric Architecture</th>
               <th>Bootstrapping</th>
@@ -724,6 +770,7 @@
               <td>MAE [1]</td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -734,6 +781,7 @@
               <td>SimCLR [2]</td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -743,6 +791,7 @@
             <tr>
               <td>BYOL [3]</td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
@@ -754,6 +803,7 @@
               <td>I-JEPA [4]</td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -762,6 +812,7 @@
             </tr>
             <tr>
               <td>Data2vec [5]</td>
+              <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -772,6 +823,7 @@
             </tr>
             <tr>
               <td>iBOT [6]</td>
+              <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -787,12 +839,14 @@
               <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>SwAV [8]</td>
               <td class="empty"></td>
+              <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -804,6 +858,7 @@
               <td>CAE [9]</td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -814,10 +869,33 @@
               <td>SimMIM [10]</td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimMIM [10]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>MSN [11]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
               <td class="empty"></td>
             </tr>
           </tbody>
@@ -838,6 +916,7 @@
               <th>Contrastive Learning</th>
               <th>Patch-level</th>
               <th>Representation-level</th>
+              <th>Any extra regularizer</th>
             </tr>
           </thead>
           <tbody>
@@ -850,6 +929,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimCLR [2]</td>
@@ -859,6 +939,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>BYOL [3]</td>
@@ -868,6 +949,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>I-JEPA [4]</td>
@@ -877,6 +959,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>Data2vec [5]</td>
@@ -886,6 +969,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>iBOT [6]</td>
@@ -895,6 +979,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>DINO [7]</td>
@@ -904,6 +989,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SwAV [8]</td>
@@ -913,6 +999,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>CAE [9]</td>
@@ -922,6 +1009,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimMIM [10]</td>
@@ -931,6 +1019,17 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>MSN [11]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
             </tr>
           </tbody>
         </table>
@@ -1022,6 +1121,13 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>MSN [11]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1087,6 +1193,11 @@
             </tr>
             <tr>
               <td>SimMIM [10]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>MSN [11]</td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
