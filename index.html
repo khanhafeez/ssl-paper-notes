@@ -405,13 +405,14 @@
               existing methods struggle to learn meaningful visual/patch-level semantics.
             </p>
             <p>
-              iBOT combines learning local structural information using masked image modeling and global visual semantics using the cross-view alignment. In iBOT, 
-              an image is sampled and two augmented views are created. Both views are passed through a student and a teacher network, but the view that's input to 
-              the student undergoes random masking. The student encodes these masked patches using a ViT, while the teacher encodes the unmasked view. The 
-              student’s masked patch tokens are aligned to the corresponding teacher tokens using a cross-entropy (CE) loss. At the same time, iBOT also aligns 
-              the [CLS] tokens across the two views, using CE loss, so that the model learns global visual semantics and transformation-invariant features between 
-              the two correlated (augmented) views. The student is updated by gradient descent, and the teacher is updated as an EMA of the student. Moreover, the 
-              same projection head is shared by the [CLS] token and each patch token to borrow the capability of semantic abstraction acquired from the [CLS] token. 
+             iBOT combines learning local structural information using masked image modeling and global visual semantics using the cross-view alignment. In iBOT, 
+              an image is sampled and two augmented views are created. Both views are passed through a student and a teacher network, but the view that's input 
+              to the student undergoes random masking. The student encodes these masked (and unmasked) patches using a ViT, while the teacher encodes all the 
+              patches. The student’s masked patch tokens are aligned to the corresponding teacher tokens using a cross-entropy (CE) loss. At the same time, iBOT 
+              also aligns the [CLS] tokens across the two views, using CE loss, so that the model learns global visual semantics and transformation-invariant 
+              features between the two correlated (augmented) views. The student is updated by gradient descent, and the teacher is updated as an EMA of the 
+              student. Moreover, the same projection head is shared by the [CLS] token and each patch token to borrow the capability of semantic abstraction 
+              acquired from the [CLS] token. 
             </p>
             <div class="paper-figure">
               <img src="images/ibot.png" alt="ibot architecture">
