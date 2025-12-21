@@ -622,9 +622,44 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [12] Exploring Simple Siamese Representation Learning
+          </div>
+          <div class="paper-meta">
+            <span>CVPR 2021</span>
+            <span>Citations: 6,043 (as on date 12/21/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Chen_Exploring_Simple_Siamese_Representation_Learning_CVPR_2021_paper.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Learning through transformation invariance enables models to acquire context-rich representations that transfer well to downstream tasks. However, 
+              many such methods rely on negative samples, large batch sizes [2], or momentum encoders [3] to prevent representation collapse. This motivates the 
+              question of whether a simpler formulation, without these requirements, can still learn meaningful representations.
+            </p>
+            <p>
+             SimSiam proposes a joint-embedding Siamese architecture that avoids both negative samples and momentum encoders. Two augmented views of the same 
+              image are processed by a shared encoder and MLP projection head. The representation from one branch is passed through an additional MLP prediction 
+              head to predict the representation of the other view. Training minimizes a negative cosine similarity loss, but gradients are propagated only 
+              through the predictor branch, while a stop-gradient operation is applied to the target branch. The loss is symmetrized by swapping the roles of the 
+              two views. Compared to BYOL [3], SimSiam removes the momentum encoder entirely and relies solely on architectural asymmetry and stop-gradient to 
+              prevent collapse.
+            </p>
+            <div class="paper-figure">
+              <img src="images/msn.png" alt="msn architecture">
+              <p class="caption">Figure: MSN Architecture [11].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
+    
     <!-- TABLE SECTION -->
     <h2>Algorithm vs Feature Comparison</h2>
     <section>
@@ -743,6 +778,15 @@
               <td class="check"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>SimSiam [12]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -859,6 +903,15 @@
               <td>MSN [11]</td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimSiam [12]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1020,6 +1073,17 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>SimSiam [12]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1036,6 +1100,7 @@
               <th>MSE/L2</th>
               <th>CE</th>
               <th>Contrastive Learning</th>
+              <th>Cosine Similarity</th>
               <th>Patch-level</th>
               <th>Representation-level</th>
               <th>Any extra regularizer</th>
@@ -1049,6 +1114,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1059,6 +1125,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -1067,6 +1134,7 @@
               <td>BYOL [3]</td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1080,6 +1148,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
@@ -1087,6 +1156,7 @@
               <td>Data2vec [5]</td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1100,6 +1170,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
@@ -1108,6 +1179,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1120,6 +1192,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
@@ -1129,6 +1202,7 @@
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -1136,6 +1210,7 @@
             <tr>
               <td>SimMIM [10]</td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1151,7 +1226,19 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
+            </tr>
+            <tr>
+              <td>SimSiam [12]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
             </tr>
           </tbody>
         </table>
@@ -1250,6 +1337,13 @@
               <td class="check"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>SimSiam [12]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1320,6 +1414,11 @@
             </tr>
             <tr>
               <td>MSN [11]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimSiam [12]</td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
