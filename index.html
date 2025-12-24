@@ -656,6 +656,44 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [13] BEiT: BERT PRE-TRAINING OF IMAGE TRANSFORMERS
+          </div>
+          <div class="paper-meta">
+            <span>ICLR 2022</span>
+            <span>Citations: 4,190 (as on date 12/22/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openreview.net/pdf?id=p-BhZSz59o4" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              BERT-like pretraining works very well in the language domain due to rich semantics. However, in vision, directly using a similar strategy in the 
+              pixel space leads to two main issues: short-range dependencies and high-frequency details that are not necessary for semantic understanding. 
+              Moreover, unlike language, pixels do not have a predefined vocabulary. As a result, a softmax classifier cannot be directly applied, since there 
+              are no discrete classes or categories over which pixel values can be predicted. Perhaps, an intermediate representation that enables predicting a 
+              vocabulary over the pixel space is required.
+            </p>
+            <p>
+             BEiT proposes a masked image modeling approach that predicts discrete visual tokens instead of raw pixels. These discrete tokens are obtained by 
+              first training a discrete variational autoencoder (dVAE). The dVAE encodes image patches into a sequence of discrete visual tokens and decodes them 
+              back to reconstruct the original image patches. The dVAE training minimizes a reconstruction loss while learning a codebook that maps image patches 
+              to discrete tokens. Once the dVAE is trained, BEiT performs pretraining by randomly masking image patches in a blockwise manner and replacing them 
+              with learnable mask tokens. Both visible patch embeddings and mask tokens are passed through the BEiT encoder. The representations corresponding to 
+              the masked tokens are then fed into a masked image modeling head to predict the corresponding discrete visual tokens produced by the dVAE. The 
+              model is trained by minimizing a cross-entropy loss between the predicted token distribution and the target discrete visual tokens over the masked 
+              patches.
+            </p>
+            <div class="paper-figure">
+              <img src="images/beit.png" alt="beit architecture">
+              <p class="caption">Figure: BEiT Architecture [13].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -782,6 +820,15 @@
               <td>SimSiam [12]</td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>BEiT [13]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -916,6 +963,15 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>BEiT [13]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
             </tr>
           </tbody>
         </table>
@@ -1084,6 +1140,17 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>BEiT [13]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1240,6 +1307,17 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>BEiT [13]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1344,6 +1422,13 @@
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>BEiT [13]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1419,6 +1504,11 @@
             </tr>
             <tr>
               <td>SimSiam [12]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>BEiT [13]</td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
