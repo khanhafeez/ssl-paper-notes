@@ -694,6 +694,43 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [14] Barlow Twins: Self-Supervised Learning via Redundancy Reduction
+          </div>
+          <div class="paper-meta">
+            <span>ICML 2021</span>
+            <span>Citations: 3,148 (as on date 12/26/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://proceedings.mlr.press/v139/zbontar21a/zbontar21a.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Prior self-supervised learning methods often rely on large batch sizes to prevent representation collapse or require carefully designed training 
+              mechanisms, such as asymmetric architectures, momentum encoders, or stop-gradient operations. This motivates the question of whether a simpler 
+              objective can be formulated to avoid collapse without such design choices. Inspired by Barlow’s redundancy-reduction principle in neuroscience, 
+              which hypothesizes that sensory systems aim to recode highly redundant inputs into statistically independent components, Barlow Twins (BT) proposes 
+              an objective that encourages the cross-correlation matrix between twin embeddings to approach the identity matrix.
+            </p>
+            <p>
+              BT learns representations using a joint embedding architecture, where two distorted versions of each image in a batch are passed through identical 
+              encoder and projection heads in parallel. Given the resulting batch embeddings from the two views, a cross-correlation matrix is computed using 
+              cosine similarity between feature dimensions i and j across the batch. The diagonal elements enforce invariance by encouraging each feature to be 
+              consistent across views, while the off-diagonal elements reduce redundancy by decorrelating different feature components. This objective is inspired 
+              by the Information Bottleneck principle of reducing redundancy while preserving relevant information. It is also conceptually related to contrastive 
+              learning; however, the BT loss operates across feature dimensions rather than across samples. Consequently, it benefits from very high-dimensional 
+              embeddings in a manner similar to how contrastive methods benefit from large batch sizes.
+            </p>
+            <div class="paper-figure">
+              <img src="images/bt.png" alt="bt architecture">
+              <p class="caption">Figure: BT Architecture [14].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -834,6 +871,15 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>BT [14]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -973,6 +1019,15 @@
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>BT [14]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -992,6 +1047,7 @@
               <th>Bootstrapping</th>
               <th>Normalization</th>
               <th>Clustering</th>
+              <th>Matrix Computation</th>
               <th>Last-k layer averaged target</th>
             </tr>
           </thead>
@@ -1007,6 +1063,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimCLR [2]</td>
@@ -1016,6 +1073,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
@@ -1029,6 +1087,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>I-JEPA [4]</td>
@@ -1037,6 +1096,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1050,6 +1110,7 @@
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
             </tr>
             <tr>
@@ -1060,6 +1121,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
@@ -1073,6 +1135,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SwAV [8]</td>
@@ -1083,6 +1146,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
@@ -1095,16 +1159,6 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
-            </tr>
-            <tr>
-              <td>SimMIM [10]</td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
@@ -1113,6 +1167,19 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimMIM [10]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1128,6 +1195,7 @@
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimSiam [12]</td>
@@ -1139,16 +1207,18 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
-              <td>BEiT [13]</td>
+              <td>BT [14]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
           </tbody>
@@ -1318,6 +1388,17 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>BT [14]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1429,6 +1510,13 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>BT [14]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1450,15 +1538,18 @@
             <tr>
               <td>MAE [1]</td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
             </tr>
             <tr>
               <td>SimCLR [2]</td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="check"></td>
             </tr>
             <tr>
               <td>BYOL [3]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
@@ -1466,9 +1557,11 @@
               <td>I-JEPA [4]</td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>Data2vec [5]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
@@ -1476,9 +1569,11 @@
               <td>iBOT [6]</td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>DINO [7]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
@@ -1486,9 +1581,11 @@
               <td>SwAV [8]</td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>CAE [9]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
@@ -1501,15 +1598,24 @@
               <td>MSN [11]</td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimSiam [12]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>BEiT [13]</td>
               <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>BT [14]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
               <td class="empty"></td>
             </tr>
           </tbody>
