@@ -731,6 +731,51 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [15] Deconstructing Denoising Diffusion Models for Self-Supervised Learning
+          </div>
+          <div class="paper-meta">
+            <span>ICLR 2025</span>
+            <span>Citations: 136 (as on date 12/29/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openreview.net/pdf?id=9oMB6wnFYM" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Denoising Diffusion Models (DDMs) are at the forefront of image generation. Recently, the representation learning capabilities of off-the-shelf 
+              DDMs have been explored in self-supervised learning (SSL); however, it remains unclear whether these representations arise from a denoising-driven 
+              or from the diffusion-driven process. On the contrary, SSL methods based on predictive masking have demonstrated strong performance, outperforming 
+              classical denoising autoencoders (DAEs) that inject additive gaussian noise in the pixel space. Masking-based methods such as MAE [1] have a slight 
+              advantage where they explicitly define known versus unknown content within an image, whereas DAEs that predict clean images from additive noise lack 
+              such explicit known/unknown supervision.
+            </p>
+            <p>
+              Latent-DAE (l-DAE) is proposed by progressively deconstructing DDMs to identify the components critical for representation learning. The study shows 
+              that SSL performance is not correlated to the generative quality of the model, and that directly using DDMs for SSL implicitly relies on components 
+              that are illegitimate within the SSL paradigm. Moreover, several components designed to improve generation quality are unnecessary for learning good 
+              representations. In l-DAE, an image is projected into a low-dimensional latent space using PCA, Gaussian noise is added in this latent space, and 
+              the corrupted latent is mapped back to pixel space via inverse PCA. Then, an autoencoder is trained to predict the original clean image from this 
+              noisy input. The “noise” consists of additive latent Gaussian noise and reconstruction error introduced by the PCA–inverse PCA projection. The 
+              prediction error of the denoised image is calculated by projecting into PCA coordinates with a dimension-weighted MSE loss, where the first d 
+              principal components (corresponding to the retained latent dimensions) are weighted by 1 and the remaining D−d components (with D denoting the full 
+              image dimension) are down-weighted by 0.1. After training, only the encoder is used for downstream tasks. The key finding is that the latent 
+              bottleneck (tokenizer) where noise is injected is the primary factor enabling strong representation learning. In this work, starting from a VQGAN 
+              tokenizer and Diffusion Transformer (DiT), progressively the diffusion-specific components such as class conditioning, noise scheduling are 
+              removed/replaced to approach a classical DAE. The tokenizer is replaced with a simple PCA–inverse PCA projection. While adding multi-level noise in 
+              the latent space acts as a form of data augmentation and improves performance, even a single noise level yields good results with only a slight 
+              degradation, indicating that representation learning is fundamentally a denoising-driven process and not diffusion-driven.
+            </p>
+            <div class="paper-figure">
+              <img src="images/l-dae" alt="l-DAE architecture">
+              <p class="caption">Figure: l-DAE Architecture [15].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -745,6 +790,7 @@
             <tr>
               <th>Algorithm</th>
               <th>Random Masking</th>
+              <th>Additive Gaussian Noise</th>
               <th>Data Augmentation</th>
               <th>Multiple Augmentations</th>
               <th>Negative-pair samples</th>
@@ -760,11 +806,13 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>SimCLR [2]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -774,6 +822,7 @@
             </tr>
             <tr>
               <td>BYOL [3]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -787,6 +836,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
@@ -796,12 +846,14 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
             </tr>
             <tr>
               <td>iBOT [6]</td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -811,6 +863,7 @@
             <tr>
               <td>DINO [7]</td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -819,6 +872,7 @@
             </tr>
             <tr>
               <td>SwAV [8]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
@@ -832,6 +886,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
@@ -841,12 +896,14 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>MSN [11]</td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -855,6 +912,7 @@
             </tr>
             <tr>
               <td>SimSiam [12]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -868,17 +926,29 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>BT [14]</td>
               <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>l-DAE [15]</td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
           </tbody>
         </table>
@@ -1026,6 +1096,15 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>l-DAE [15]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
               <td class="empty"></td>
             </tr>
           </tbody>
@@ -1221,6 +1300,18 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>l-DAE [14]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1235,6 +1326,7 @@
               <th>Algorithm</th>
               <th>MAE/L1</th>
               <th>MSE/L2</th>
+              <th>weighted-MSE</th>
               <th>CE</th>
               <th>Contrastive Learning</th>
               <th>Cosine Similarity</th>
@@ -1252,12 +1344,14 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>SimCLR [2]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1275,6 +1369,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
@@ -1282,6 +1377,7 @@
               <td>I-JEPA [4]</td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1297,11 +1393,13 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>iBOT [6]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1315,6 +1413,7 @@
               <td>DINO [7]</td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1324,6 +1423,7 @@
             </tr>
             <tr>
               <td>SwAV [8]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1337,6 +1437,7 @@
               <td>CAE [9]</td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1351,12 +1452,14 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>MSN [11]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1372,6 +1475,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1379,6 +1483,7 @@
             </tr>
             <tr>
               <td>BEiT [13]</td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1394,9 +1499,22 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>l-DAE [15]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
           </tbody>
@@ -1517,6 +1635,13 @@
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>l-DAE [15]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1618,6 +1743,12 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>l-DAE [15]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
             </tr>
           </tbody>
         </table>
