@@ -776,6 +776,51 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [16] DINOv2: Learning Robust Visual Features without Supervision
+          </div>
+          <div class="paper-meta">
+            <span>TMLR 2024</span>
+            <span>Citations: 6,147 (as on date 01/02/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openreview.net/pdf?id=a68SUt6zFt" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Prior works in self-supervised learning (SSL) have primarily focused on building algorithms in the context of small curated datasets, such as 
+              ImageNet-1k. Conversely, only a few approaches have attempted SSL on large uncurated datasets, and the resulting representations were often poor. 
+              This is largely due to the loss of data quality and effective diversity control, both of which are essential components for learning strong 
+              representations.
+            </p>
+            <p>
+              DINOv2 addresses this by using an automatic data preprocessing pipeline that combines curated and uncurated datasets, while also integrating 
+              several existing SSL methods into a more robust and scalable framework in which ViT encoders of different sizes are trained. In the preprocessing 
+              step, curated data are first collected and uncurated data are gathered from a large repository. Deduplication is applied to the uncurated data 
+              using a copy-detection pipeline to remove highly similar images and reduce redundancy. Images from both curated and uncurated datasets are then 
+              embedded into a latent space using a pretrained ViT-H/14 SSL encoder, and cosine similarity is computed between their embeddings. Using this 
+              similarity, K-nearest neighbors from the uncurated set are queried for each curated image; if many neighbors exist, the nearest neighbor count is 
+              capped at N=4 to maintain diversity, while fewer samples are drawn for smaller clusters. This process results in the LVD-142M dataset. DINOv2 
+              training combines DINO and iBOT losses, where a cross-entropy loss is applied on global crops using the CLS + projection head outputs of the 
+              student and teacher networks, and a patch-level cross-entropy loss is computed by masking patches in the student input and matching them to 
+              corresponding teacher outputs. Unlike iBOT, DINOv2 does not share projection heads between global and patch-level objectives, and replaces the 
+              DINO teacher softmax-centering with Sinkhorn-Knopp batch normalization from SwAV, while applying softmax to the student outputs. Additionally, a 
+              KoLeo regularizer is introduced to prevent representation collapse by encouraging feature embeddings within a batch to be uniformly spread on the 
+              unit hypersphere. DINOv2 also progressively increases image resolution toward the end of training to better capture fine-grained details. To enable 
+              large-scale training, several efficiency improvements are employed to reduce memory and compute costs. Finally, instead of training smaller ViT 
+              models from scratch, DINOv2 uses knowledge distillation by training a large ViT-g model and distilling it into smaller models, using a frozen ViT-g 
+              teacher, evaluating the EMA of the student as the final model, and applying only the iBOT loss on the two global crops.
+            </p>
+            <div class="paper-figure">
+              <img src="images/dinov2.png" alt="DINOv2 architecture">
+              <p class="caption">Figure: DINOv2 Architecture [16].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -796,6 +841,7 @@
               <th>Negative-pair samples</th>
               <th>Local views</th>
               <th>Global views</th>
+              <th>Data Preprocessing</th>
             </tr>
           </thead>
           <tbody>
@@ -809,6 +855,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimCLR [2]</td>
@@ -819,6 +866,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>BYOL [3]</td>
@@ -829,6 +877,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>I-JEPA [4]</td>
@@ -838,6 +887,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
@@ -849,6 +899,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>iBOT [6]</td>
@@ -859,6 +910,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>DINO [7]</td>
@@ -869,6 +921,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SwAV [8]</td>
@@ -879,6 +932,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>CAE [9]</td>
@@ -888,6 +942,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
@@ -899,6 +954,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>MSN [11]</td>
@@ -909,6 +965,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimSiam [12]</td>
@@ -919,6 +976,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>BEiT [13]</td>
@@ -928,6 +986,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
@@ -939,6 +998,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>l-DAE [15]</td>
@@ -949,6 +1009,18 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>DINOv2 [16]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
             </tr>
           </tbody>
         </table>
@@ -1105,6 +1177,15 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>DINOv2 [16]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
           </tbody>
@@ -1301,13 +1382,25 @@
               <td class="empty"></td>
             </tr>
             <tr>
-              <td>l-DAE [14]</td>
+              <td>l-DAE [15]</td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>DINOv2 [16]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1517,6 +1610,18 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>DINOv2 [16]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1642,6 +1747,13 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>DINOv2 [16]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1749,6 +1861,12 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+            </tr>
+            <tr>
+              <td>DINOv2 [16]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
           </tbody>
         </table>
