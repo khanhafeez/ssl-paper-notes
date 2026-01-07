@@ -821,6 +821,49 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [17] Scalable Pre-training of Large Autoregressive Image Models
+          </div>
+          <div class="paper-meta">
+            <span>ICML 2024</span>
+            <span>Citations: 116 (as on date 01/07/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="http://openreview.net/pdf?id=c92KDfEZTg" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              The success of LLMs such as ChatGPT is primarily attributed to the transformer architecture and the use of an autoregressive objective, where prior 
+              predictions are used to help make subsequent predictions. While the autoregressive objective has shown strong success in the language domain, its 
+              potential has not yet been fully realized in the image domain, even with the advent of ViTs. Moreover, existing vision pretraining techniques rely 
+              on discriminative or masking-based predictive objectives, where scalability typically requires careful hyperparameter tuning as model size increases. 
+              In contrast, LLMs trained autoregressively exhibit favorable scaling behavior without requiring extensive hyperparameter adjustments.
+            </p>
+            <p>
+              Autoregressive Image Modeling (AIM) proposes a self-supervised learning technique inspired by LLM training, using an autoregressive objective for 
+              vision. AIM constructs a large uncurated dataset, termed DFN-2B+, for pretraining. An image is first split into non-overlapping patches in a 
+              rasterized (row-major) order and linearly embedded. Positional embeddings are added, after which the patch sequence is processed by a ViT backbone. 
+              During pretraining, a causal mask is applied in the self-attention operation to predict each patch using only the preceding patches as context. The 
+              training objective minimizes the MSE between the predicted and ground-truth patches. However, since representations learned purely under causal 
+              attention do not transfer well to downstream tasks, AIM introduces a prefix mechanism. A prefix of the image patches is treated as context and 
+              excluded from the prediction loss, allowing bidirectional self-attention within the prefix while retaining causal attention for the remaining 
+              patches. Subsequently, the causal mask is removed during downstream adaptation. The final patch representations are passed through an MLP prediction 
+              head with 12 blocks, and positional embeddings are reintroduced before this head to enable location-aware pixel prediction. The pixel targets are 
+              normalized per patch before loss computation, following MAE. Since AIM does not learn image-level global descriptors during pretraining, standard 
+              linear probing is insufficient for downstream evaluation. Instead, AIM employs attentive probing, which aggregates patch features into a global 
+              representation using attention pooling. The main contribution of AIM is demonstrating that autoregressive vision pretraining exhibits strong scaling 
+              properties without making adjustments to hyperparameters for different sizes of models.
+            </p>
+            <div class="paper-figure">
+              <img src="images/aim.png" alt="AIM Architecture">
+              <p class="caption">Figure: AIM Architecture [17].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -842,6 +885,7 @@
               <th>Local views</th>
               <th>Global views</th>
               <th>Data Preprocessing</th>
+              <th>Context+ Causal Modeling</th>
             </tr>
           </thead>
           <tbody>
@@ -856,6 +900,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimCLR [2]</td>
@@ -866,6 +911,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
@@ -878,6 +924,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>I-JEPA [4]</td>
@@ -887,6 +934,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
@@ -900,6 +948,7 @@
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>iBOT [6]</td>
@@ -910,6 +959,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
@@ -922,6 +972,7 @@
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SwAV [8]</td>
@@ -933,6 +984,7 @@
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>CAE [9]</td>
@@ -942,6 +994,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
@@ -955,6 +1008,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>MSN [11]</td>
@@ -965,6 +1019,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
@@ -977,6 +1032,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>BEiT [13]</td>
@@ -986,6 +1042,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
@@ -999,6 +1056,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>l-DAE [15]</td>
@@ -1008,6 +1066,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
@@ -1020,6 +1079,19 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>AIM [17]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
             </tr>
           </tbody>
@@ -1188,6 +1260,15 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>AIM [17]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1203,6 +1284,7 @@
               <th>Predictive method</th>
               <th>Alignment method</th>
               <th>View-invariance method</th>
+              <th>Autoregressive method</th>
               <th>Asymmetric Architecture</th>
               <th>Bootstrapping</th>
               <th>Normalization</th>
@@ -1216,6 +1298,7 @@
             <tr>
               <td>MAE [1]</td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1232,6 +1315,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1242,6 +1326,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
@@ -1252,6 +1337,7 @@
             <tr>
               <td>I-JEPA [4]</td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1267,6 +1353,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -1279,6 +1366,7 @@
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -1290,6 +1378,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
@@ -1304,6 +1393,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -1314,17 +1404,6 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-            </tr>
-            <tr>
-              <td>SimMIM [10]</td>
-              <td class="check"></td>
-              <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
@@ -1336,6 +1415,20 @@
             <tr>
               <td>SimMIM [10]</td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimMIM [10]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1351,6 +1444,7 @@
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
               <td class="check"></td>
@@ -1362,6 +1456,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1378,12 +1473,14 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
             <tr>
               <td>l-DAE [15]</td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
@@ -1399,7 +1496,21 @@
               <td class="check"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
               <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>AIM [17]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1622,6 +1733,18 @@
               <td class="check"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>AIM [17]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1754,6 +1877,13 @@
               <td class="check"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>AIM [17]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1867,6 +1997,12 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>AIM [17]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
             </tr>
           </tbody>
         </table>
