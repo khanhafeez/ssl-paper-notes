@@ -864,6 +864,42 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [18] Momentum Contrast for Unsupervised Visual Representation Learning
+          </div>
+          <div class="paper-meta">
+            <span>CVPR 2020</span>
+            <span>Citations: 18,264 (as on date 01/09/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/He_Momentum_Contrast_for_Unsupervised_Visual_Representation_Learning_CVPR_2020_paper.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Discriminative pretext tasks based on contrastive loss have shown strong performance in SSL. Methods such as SimCLR [2] update model parameters 
+              end-to-end via backpropagation. However, their performance is highly dependent on large mini-batch sizes, which are constrained by GPU memory. 
+              Moreover, optimization becomes increasingly difficult as the mini-batch size grows. An alternative approach uses a memory bank that stores 
+              representations of all samples in the dataset. In each iteration, a mini-batch is sampled from this memory bank without backpropagation, enabling 
+              the use of a large number of negatives. However, each stored representation of a sample corresponds to the encoder state at the time it was last 
+              seen, leading to inconsistency across samples due to encoder updates over multiple different training steps.
+            </p>
+            <p>
+              Momentum Contrast (MoCo) addresses these issues by maintaining a queue of negative samples and using a momentum encoder. Positive pairs are formed 
+              from the current mini-batch, while negative pairs are drawn from representations stored in the queue from previous mini-batches. At each iteration, 
+              the current mini-batch is enqueued and the oldest mini-batch is dequeued. Only one encoder is updated via backpropagation, while the other encoder is 
+              updated using an EMA (momentum) of the former. This design allows the queue size used for contrastive learning to be much larger than the training 
+              mini-batch size, providing more negative samples while maintaining representation consistency through the momentum-updated encoder.
+            </p>
+            <div class="paper-figure">
+              <img src="images/moco.png" alt="MoCo Architecture">
+              <p class="caption">Figure: MoCo Architecture [18].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1094,6 +1130,18 @@
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>MoCo [18]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1269,6 +1317,15 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>MoCo [18]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1291,6 +1348,7 @@
               <th>Clustering</th>
               <th>Matrix Computation</th>
               <th>Last-k layer averaged target</th>
+              <th>Queue</th>
             </tr>
           </thead>
           <tbody>
@@ -1307,6 +1365,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimCLR [2]</td>
@@ -1317,6 +1376,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1333,6 +1393,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>I-JEPA [4]</td>
@@ -1342,6 +1403,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1359,6 +1421,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>iBOT [6]</td>
@@ -1369,6 +1432,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1385,6 +1449,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SwAV [8]</td>
@@ -1396,6 +1461,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
@@ -1411,18 +1477,6 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
-            </tr>
-            <tr>
-              <td>SimMIM [10]</td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="check"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
-              <td class="empty"></td>
               <td class="empty"></td>
             </tr>
             <tr>
@@ -1432,6 +1486,21 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>SimMIM [10]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1450,6 +1519,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>SimSiam [12]</td>
@@ -1460,6 +1530,7 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1476,6 +1547,7 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>l-DAE [15]</td>
@@ -1484,6 +1556,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1502,6 +1575,7 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
             <tr>
               <td>AIM [17]</td>
@@ -1515,6 +1589,21 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>MoCo [18]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
             </tr>
           </tbody>
         </table>
@@ -1745,6 +1834,18 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>MoCo [18]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1884,6 +1985,13 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>MoCo [18]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2001,6 +2109,12 @@
             <tr>
               <td>AIM [17]</td>
               <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>MoCo [18]</td>
+              <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
