@@ -900,6 +900,45 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [19] VICREG: Variance-Invariance-Covariance Regularization for Self-Supervised Learning
+          </div>
+          <div class="paper-meta">
+            <span>ICLR 2022</span>
+            <span>Citations: 1,635 (as on date 01/10/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openreview.net/pdf?id=xm6YD62D1Ub" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Joint embedding architectures perform well in self-supervised learning; however, existing methods impose specific requirements to avoid 
+              representation collapse. Contrastive and clustering methods require large batch sizes or memory banks. Bootstrapping methods rely on a momentum 
+              encoder and often a predictor. Moreover, many methods require normalization, shared weights between networks, and identical architectures in the 
+              case of contrastive learning. This motivates the need for a more flexible approach with fewer architectural constraints.
+            </p>
+            <p>
+              Variance-Invariance-Covariance Regularization (VICReg) is a joint-embedding architecture that operates on two networks receiving a batch of 
+              different augmented views of the same images. It introduces a triplet loss by applying variance and covariance regularization losses independently 
+              to the batch of embeddings produced by each network, while enforcing invariance using a mean-squared-error loss between the corresponding embeddings 
+              across the two networks. The variance regularization term helps avoid representation collapse by acting as a hinge loss that enforces a lower bound 
+              on the standard deviation of each embedding dimension across the batch from a network. This prevents individual embedding dimensions from collapsing 
+              to a constant value across samples. The covariance regularization term, inspired by Barlow Twins [14], aims to maximize the information content of 
+              the representations by decorrelating different embedding dimensions within a batch of a network. This is achieved by penalizing the off-diagonal 
+              entries of the covariance matrix, encouraging them to approach zero and thereby reducing redundancy among embedding dimensions. Since the variance 
+              and covariance regularization terms are applied independently to the batch of embeddings of each network, VICReg does not require shared weights, 
+              identical architectures, normalization, stop-gradient, or a predictor function.
+            </p>
+            <div class="paper-figure">
+              <img src="images/vicreg.png" alt="VICReg Architecture">
+              <p class="caption">Figure: VICReg Architecture [19].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1142,6 +1181,18 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>VICReg [19]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1319,6 +1370,15 @@
             </tr>
             <tr>
               <td>MoCo [18]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>VICReg [19]</td>
               <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
@@ -1605,6 +1665,20 @@
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>VICReg [19]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1846,6 +1920,18 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>VICReg [19]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1992,6 +2078,13 @@
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>VICReg [19]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2117,6 +2210,12 @@
               <td class="check"></td>
               <td class="empty"></td>
               <td class="check"></td>
+            </tr>
+            <tr>
+              <td>VICReg [19]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
             </tr>
           </tbody>
         </table>
