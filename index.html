@@ -939,6 +939,41 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [20] Connecting Joint-Embedding Predictive Architecture with Contrastive Self-supervised Learning
+          </div>
+          <div class="paper-meta">
+            <span>NeurIPS 2024</span>
+            <span>Citations: 8 (as on date 01/11/2025)</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/04a80267ad46fc730011f8760f265054-Paper-Conference.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Joint Embedding Predictive Architecture (JEPA) has emerged as an effective self-supervised learning paradigm by predicting in the latent 
+              representation space rather than the pixel space. By operating in the latent space, JEPA discards low-level, task-irrelevant details and focuses 
+              on learning semantic structure and more meaningful representations from image data. I-JEPA [4] employs an exponential moving average (EMA) of the 
+              context encoder to stabilize training and mitigate representation collapse; however, this mechanism alone does not fully prevent collapse. This 
+              motivates the need for additional constraints to mitigate representation collapse.
+            </p>
+            <p>
+              Contrastive-JEPA (C-JEPA) addresses this issue by integrating the VICReg triplet loss [19] into I-JEPA. Specifically, it retains the invariance 
+              objective by minimizing the mean squared error between the predicted target patches and their corresponding target encodings, as in I-JEPA, while 
+              additionally applying variance and covariance regularization to the batch of context embeddings. These regularization terms encourage feature 
+              diversity and decorrelation across embedding dimensions, preserving information content and preventing collapse, and enabling each masked patch to 
+              contribute meaningfully to the overall representation.
+            </p>
+            <div class="paper-figure">
+              <img src="images/c-jepa.png" alt="C-JEPA Architecture">
+              <p class="caption">Figure: C-JEPA Architecture [20].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1193,6 +1228,18 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>C-JEPA [20]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1383,6 +1430,15 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>C-JEPA [20]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
@@ -1679,6 +1735,20 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>C-JEPA [20]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1932,6 +2002,18 @@
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>C-JEPA [20]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2085,6 +2167,13 @@
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>C-JEPA [20]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2213,6 +2302,12 @@
             </tr>
             <tr>
               <td>VICReg [19]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>C-JEPA [20]</td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
