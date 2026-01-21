@@ -994,6 +994,50 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [21] Whitening for Self-Supervised Representation Learning
+          </div>
+          <div class="paper-meta">
+            <span>ICML 2021</span>
+            <span>Citations: 436 (as on date 01/21/2025)</span>
+            <span>Category: JEA</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://proceedings.mlr.press/v139/ermolov21a/ermolov21a.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Prior methods such as BYOL and SimSiam use asymmetric architectures along with stop-gradient or EMA-based teacher updates to prevent representation 
+              collapse. In addition, they rely on batch normalization (BN) in their networks, without which collapse is observed. Moreover, these methods do not 
+              fully exploit the number of augmentations available as positive pairs. Typically, they use two augmentations, and in some cases four, but they do 
+              not leverage all possible combinations of multiple augmentations to further enhance invariance learning.
+            </p>
+            <p>
+              Whitening-Mean Squared Error (W-MSE) leverages d(d−1) positive pairs and whitens the batch of embeddings formed from all images and their 
+              augmentations before computing the cosine similarity between positive pairs. Whitening refers to transforming the embeddings such that the batch 
+              mean becomes 0 and the batch covariance becomes the identity matrix (I). In W-MSE, the features V are first extracted using an encoder followed by 
+              a projection head. The batch of embeddings is then mean-centered as X = (V − mV), where mV denotes the mean of the batch embeddings. Whitening is 
+              applied to these mean-centered embeddings using the Cholesky decomposition. Specifically, the whitened embeddings are obtained as Z = W X, where the 
+              objective is to achieve cov(Z) = I. So, cov(Z) = W cov(X) W^T, and let cov(X) = A. The whitening condition becomes W A W^T = I. This condition 
+              ensures that after applying the linear transformation W, the new variables have identity covariance. To compute W, the covariance matrix A is 
+              factorized using Cholesky decomposition as A = L L^T, where L is a lower triangular matrix. Substituting this into the whitening condition gives W L L^T W^T. 
+              Choosing W = L^-1 results in W L L^T W^T = L^-1 L L^T (L^-1)^T. Since multiplying a matrix with its inverse produces the identity matrix, this simplifies to 
+              (L^-1 L)(L^T (L^-1)^T) = I. As a result, W = L^-1 whitens X and produces Z with covariance equal to I. Following whitening, the batch embeddings are 
+              L2-normalized and the cosine similarity between positive pairs is computed (implemented as MSE between normalized embeddings). Since whitening over the entire 
+              batch can be unstable and lead to high-variance estimates of the whitening matrix, W-MSE uses batch slicing, where whitening is applied independently on 
+              smaller sub-batches. Moreover, in W-MSE, the network cannot learn to exploit subtle inter-sample dependencies introduced by BN, because BN is applied only in 
+              the last layer of the network and there are no additional learnable layers that are applied on top of the whitened Z features.
+            </p>
+            <div class="paper-figure">
+              <img src="images/w-mse" alt="W-MSE Architecture">
+              <p class="caption">Figure: W-MSE Architecture [21].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1260,6 +1304,18 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>W-MSE [21]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1459,6 +1515,15 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>W-MSE [21]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
@@ -1769,6 +1834,20 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>W-MSE [21]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2034,6 +2113,18 @@
               <td class="check"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>W-MSE [21]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2194,6 +2285,13 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>W-MSE [21]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2328,6 +2426,12 @@
             </tr>
             <tr>
               <td>C-JEPA [20]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>W-MSE [21]</td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
