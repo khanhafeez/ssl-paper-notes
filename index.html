@@ -1038,6 +1038,50 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [22] Contrastive Masked Autoencoders are Stronger Vision Learners
+          </div>
+          <div class="paper-meta">
+            <span>TPAMI 2024</span>
+            <span>Citations: 260 (as on date 01/24/2025)</span>
+            <span>Category: PA + JEPA</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://ieeexplore.ieee.org/abstract/document/10330745?casa_token=mXbXKt7KVOQAAAAA:6QCCkFKEe3xbQi5Rdjy_JA1Wf1LWXf4ZWstVfcyOzuE2e0wHOzyctlz8QCnFAgIaQ1iUVH39NA" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Most works in self-supervised learning either use a pretext task such as Masked Image Modeling (MIM) to learn structural information, or learn 
+              transformation-invariant features that capture global semantics. There are few methods such as iBOT and DINOv2 that learn both types of features. 
+              However, these methods directly utilize the representations of visible patches to align with those of an unmasked view. Learning invariant features 
+              from such different inputs may lead to discrepancies, since the two inputs exhibit different levels of abstraction and semantic coverage. Moreover, 
+              transformation-invariant methods commonly rely on random cropping to generate augmented views, which may remove important information about the main 
+              object when the crops are too far apart. This suggests the need for an approach that provides a better cropping strategy and decouples MIM and 
+              transformation-invariant learning.
+            </p>
+            <p>
+              Contrastive-Masked Autoencoders (CMAE) aim to learn both structural information (as in MAE [1]) and global information (through contrastive learning). 
+              CMAE proposes using pixel shifting instead of random cropping for learning global representations. An image is first randomly cropped and resized to 
+              form a master image. From this master image, a pixel-shifted crop is generated, randomly masked, and used as input to an online encoder. Another 
+              pixel-shifted crop, covering a different region of the same master image, is created and undergoes color augmentation before being fed to a momentum 
+              encoder. The latent representations of the unmasked tokens from the online encoder are appended with learnable masked tokens and passed to an online 
+              decoder to reconstruct the masked tokens, following MAE. In parallel, the same tokens are input to a feature decoder, which predicts token-level 
+              features and aggregates both masked and unmasked tokens to form a global representation. The global representation produced by the feature decoder is 
+              then passed through a projection head followed by a prediction head to predict with the representation from the momentum encoder and a projection head. 
+              Global features are learned using contrastive learning, where positive pairs are pixel-shifted views from the same master image, and negative pairs 
+              are pixel-shifted views from different master images. The weights of online encoder and decoder are updated using gradient descent, while the weights 
+              of momentum encoder and its projection head, feature decoder and its projection and prediction heads are all updated using EMA of the online encoder.  
+            </p>
+            <div class="paper-figure">
+              <img src="images/cmae.png" alt="W-MSE Architecture">
+              <p class="caption">Figure: CMAE Architecture [22].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1316,6 +1360,18 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>CMAE [22]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1525,6 +1581,15 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>CMAE [22]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
               <td class="empty"></td>
             </tr>
           </tbody>
@@ -1848,6 +1913,20 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>CMAE [22]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2125,6 +2204,18 @@
               <td class="check"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>CMAE [22]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2292,6 +2383,13 @@
               <td class="empty"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>CMAE [22]</td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+              <td class="check"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2435,6 +2533,12 @@
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>CMAE [22]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
             </tr>
           </tbody>
         </table>
