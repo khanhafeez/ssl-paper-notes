@@ -1120,6 +1120,48 @@
             </div>
           </div>
         </article>
+
+        <article class="paper-card">
+          <div class="paper-title">
+            [24] USP: Unified Self-Supervised Pretraining for Image Generation and Understanding
+          </div>
+          <div class="paper-meta">
+            <span>ICCV 2025</span>
+            <span>Citations: 12 (as on date 02/12/2026)</span>
+            <span>Category: PA</span>
+          </div>
+          <div class="paper-link">
+            <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Chu_USP_Unified_Self-Supervised_Pretraining_for_Image_Generation_and_Understanding_ICCV_2025_paper.pdf" target="_blank" rel="noopener noreferrer">
+              Paper link
+            </a>
+          </div>
+          <div class="paper-summary">
+            <p>
+              Image recognition and generation are two different tasks. Image recognition includes classification, detection, and segmentation, while generation 
+              includes generating images from noisy images. For image recognition, representations are learned through a self-supervised learning (SSL) objective, 
+              while generative models for images leverage diffusion-based models, which have also shown that they learn discriminative representations. The two 
+              separate tasks may be unified, but there are three key challenges: input mismatch, i.e., SSL uses different types of augmentations while images are 
+              perturbed through Gaussian noise for generation; architectural differences, since both tasks use different types of models; and divergent loss 
+              functions and supervision signals.
+            </p>
+            <p>
+              Unified Self-Supervised Pretraining (USP) proposes a unified model that works well for both image recognition and generation tasks. It is 
+              essentially an MAE applied in the latent space of a frozen Stable Diffusion Variational Autoencoder (SD-VAE). An image of shape WxHx3 is initially 
+              encoded using SD-VAE to a latent of shape W/8xH/8x4. The latent image is passed through a PatchConv layer (similar to the linear projection layer 
+              in a ViT) to extract tokens. Learnable 2×2 convolutions with stride 2 are used to obtain tokens of size W/16xH/16xh, where h is the hidden 
+              dimension size of the ViT. The tokens are randomly masked, and only the visible tokens are passed through a ViT encoder. Learnable mask tokens are 
+              inserted in place of the masked regions, and the target SD-VAE latent patches are reconstructed using an asymmetric decoder, with MSE computed over 
+              them. Although the SD-VAE latent is of shape W/8xH/8x4, the target latent is reorganized into patches of size W/16xH/16x16, where each patch 
+              corresponds to a 2x2x4=16 block at each spatial location in the W/16xH/16. Each patch is normalized individually, and the loss is computed only 
+              over the masked patches. The VAE normalization scheme is applied to the input images instead of ImageNet normalization to avoid drifting from 
+              SD-VAE’s data distribution, which could otherwise affect performance on generation tasks.
+            </p>
+            <div class="paper-figure">
+              <img src="images/usp.png" alt="usp Architecture">
+              <p class="caption">Figure: USP Architecture [24].</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1422,6 +1464,18 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>USP [24]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -1439,7 +1493,7 @@
               <th>Latent patch embedding + projection head</th>
               <th>Latent patch embedding</th>
               <th>Patch/Pixels</th>
-              <th>Patch Tokens (dVAE or DALL-E)</th>
+              <th>Patch Tokens (VAE or DALL-E)</th>
             </tr>
           </thead>
           <tbody>
@@ -1650,6 +1704,15 @@
               <td class="empty"></td>
               <td class="check"></td>
               <td class="empty"></td>
+            </tr>
+            <tr>
+              <td>USP [24]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
             </tr>
           </tbody>
         </table>
@@ -1976,6 +2039,19 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>USP [24]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2277,6 +2353,18 @@
               <td class="empty"></td>
               <td class="empty"></td>
             </tr>
+            <tr>
+              <td>USP [24]</td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2458,6 +2546,13 @@
               <td class="check"></td>
               <td class="check"></td>
             </tr>
+            <tr>
+              <td>USP [24]</td>
+              <td class="check"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+              <td class="empty"></td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -2610,6 +2705,12 @@
             </tr>
             <tr>
               <td>SiameseIM [23]</td>
+              <td class="empty"></td>
+              <td class="empty"></td>
+              <td class="check"></td>
+            </tr>
+            <tr>
+              <td>USP [24]</td>
               <td class="empty"></td>
               <td class="empty"></td>
               <td class="check"></td>
